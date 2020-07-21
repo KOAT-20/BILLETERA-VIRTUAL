@@ -12,7 +12,7 @@ export default class App extends Component {
       <header>
         <Navbar />
       </header>
-      <MDBContainer className='mt-5'>
+      <MDBContainer className='mt-4'>
         <MDBRow>
           <MDBCol><Login /></MDBCol>
           <MDBCol><Register /></MDBCol>

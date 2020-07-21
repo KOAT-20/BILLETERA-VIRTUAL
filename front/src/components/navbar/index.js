@@ -8,6 +8,9 @@ import { Logo } from '../../images/images.js';
 import './navbar.css';
 
 export default class Navbar extends Component {
+  state = {
+    logout: false
+  }
   render () {
     return (
       <MDBNavbar className='nav-style' color='stylish-color' light>
@@ -15,7 +18,7 @@ export default class Navbar extends Component {
         <Logo />
         </MDBNavbarBrand>
         <MDBNavbarNav right>
-          <LogoutOutlined className='logout' />
+          {this.state.logout === false ? '' : <LogoutOutlined className='logout' /> }
         </MDBNavbarNav>
       </MDBNavbar>
     );
