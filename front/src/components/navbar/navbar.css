@@ -1,0 +1,8 @@
+.nav-style {
+  box-shadow: none !important;
+  color: white;
+}
+.icon-login {
+  cursor: pointer;
+  font-size: 30px;
+}

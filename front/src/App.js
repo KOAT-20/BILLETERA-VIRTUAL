@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+/* Components */
+import Navbar from './components/navbar';
+import Login from './components/login';
 
 export default class App extends Component {
   render () {
     return (
-    <header>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">Navbar</a>
-        </div>
-      </nav>
-    </header>
+    <React.Fragment>
+      <header>
+        <Navbar />
+      </header>
+      <MDBContainer className='mt-5'>
+        <MDBRow>
+          <MDBCol><Login /></MDBCol>
+          <MDBCol>Register</MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </React.Fragment>
     );
   }
 }
