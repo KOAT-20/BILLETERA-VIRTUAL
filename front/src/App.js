@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 /* Components */
 import Navbar from './components/navbar';
 import Login from './components/login';
+import Register from './components/register';
 
 export default class App extends Component {
   render () {
@@ -14,7 +15,7 @@ export default class App extends Component {
       <MDBContainer className='mt-5'>
         <MDBRow>
           <MDBCol><Login /></MDBCol>
-          <MDBCol>Register</MDBCol>
+          <MDBCol><Register /></MDBCol>
         </MDBRow>
       </MDBContainer>
     </React.Fragment>

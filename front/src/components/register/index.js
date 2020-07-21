@@ -4,7 +4,7 @@ import { MDBCard, MDBCardBody } from 'mdbreact';
 export default class Register extends Component {
   render () {
     return (
-      <MDBCard>
+      <MDBCard color='grey lighten-2'>
         <MDBCardBody>
           Register
         </MDBCardBody>
