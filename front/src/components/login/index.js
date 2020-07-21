@@ -12,11 +12,11 @@ export default class Login extends Component {
           <div className='text-center'><LoginOutlined className='icon-login' /></div>
           <form>
             <div className='grey-text mt-3'>
-              <label htmlFor='user' className='black-text'>Your User</label>
+              <label htmlFor='user' className='black-text'>User</label>
               <input type='text' id='user' className='form-control' />
               <br />
-              <label htmlFor='user' className='black-text'>Your Password</label>
-              <input type='text' id='user' className='form-control' />
+              <label htmlFor='password' className='black-text'>Password</label>
+              <input type='text' id='password' className='form-control' />
             </div>
             <div className='text-center mt-5'>
               <MDBBtn color='secondary w-75'>Login</MDBBtn>
@@ -25,7 +25,7 @@ export default class Login extends Component {
               <a href='/'><small>Restore User</small></a>
               <br/>
               <a href='/'><small>Restore Password</small></a>
-            </div>  
+            </div>
           </form>
         </MDBCardBody>
       </MDBCard>

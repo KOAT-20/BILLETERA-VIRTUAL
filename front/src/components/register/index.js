@@ -14,22 +14,22 @@ export default class Register extends Component {
             <div className='grey-text mt-3'>
               <label htmlFor='document' className='black-text'>Document</label>
               <div className='row ml-1 mr-1'>
-                <select id='document' className='browser-default custom-select w-25'>
+                <select className='browser-default custom-select w-25'>
                   <option value='V'>V</option>
                   <option value='E'>E</option>
                   <option value='J'>J</option>
                 </select>
-                <input type='number' className='form-control w-75' />
+                <input id='document' type='number' className='form-control w-75' />
               </div>
               <br /><br/>
-              <label htmlFor='user' className='black-text'>Your Name</label>
-              <input type='text' id='user' className='form-control' />
+              <label htmlFor='name' className='black-text'>Your Name</label>
+              <input type='text' id='name' className='form-control' />
               <br />
-              <label htmlFor='user' className='black-text'>Your Email</label>
-              <input type='text' id='user' className='form-control' />
+              <label htmlFor='email' className='black-text'>Your Email</label>
+              <input type='email' id='email' className='form-control' />
               <br />
-              <label htmlFor='user' className='black-text'>Your Password</label>
-              <input type='text' id='user' className='form-control' />
+              <label htmlFor='passwordr' className='black-text'>Your Password</label>
+              <input type='password' id='passwordr' className='form-control' />
             </div>
             <div className='text-center mt-3'>
               <MDBBtn color='success w-75' >Register</MDBBtn>
