@@ -1,10 +1,12 @@
-import Reac, { Component } from 'react';
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 /* Components */
 import Navbar from './components/navbar';
 import Login from './components/login';
 import Register from './components/register';
+/* Pages */
+import Profile from './pages/profile';
 
 export default class App extends Component {
   constructor () {
@@ -20,11 +22,18 @@ export default class App extends Component {
     })
   }
 
+  logOut = () => {
+    localStorage.removeItem('user_data');
+    localStorage.removeItem('session');
+    console.log(`sesion cerrada.`);
+    window.location.href = '/';
+  }
+
   render () {
     return (
       <div>
         <header>
-          <Navbar setSession={this.setSession} />
+          <Navbar setSession={this.setSession} logOut={this.logOut} />
         </header>
         <MDBContainer className='mt-4'>
           <MDBRow>
@@ -35,6 +44,7 @@ export default class App extends Component {
                 <Route exact path='/' component={Register} />
             </MDBCol>
           </MDBRow>
+          <Route path='/profile' component={Profile} />
         </MDBContainer>
       </div>
     );

@@ -27,7 +27,7 @@ export default class Login extends Component {
           email: this.state.email,
           password: this.state.password,
         });
-        localStorage.setItem('user_data', JSON.stringify(res.data.data));
+        localStorage.setItem('user_data', JSON.stringify(res.data));
         localStorage.setItem('session', true);
         window.location.href = '/profile';
       } catch (error) {

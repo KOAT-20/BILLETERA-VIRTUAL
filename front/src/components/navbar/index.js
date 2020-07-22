@@ -15,7 +15,7 @@ export default class Navbar extends Component {
     }
   }
 
-  async componentWillMount () {
+  async componentDidMount () {
     const flag = (localStorage.session === 'true') ? true : false;
     this.setState({
       logout: flag,
@@ -31,7 +31,11 @@ export default class Navbar extends Component {
         <Logo />
         </MDBNavbarBrand>
         <MDBNavbarNav right>
-          {(JSON.parse(localStorage.getItem('user_data'))) ? <div></div> : <LogoutOutlined className='logout' /> }
+          {(JSON.parse(localStorage.getItem('user_data'))) ?
+          <LogoutOutlined className='logout' onClick={this.props.logOut} /> 
+          :
+          ''
+        }
         </MDBNavbarNav>
       </MDBNavbar>
     );
