@@ -8,9 +8,22 @@ import { Logo } from '../../images/images.js';
 import './navbar.css';
 
 export default class Navbar extends Component {
-  state = {
-    logout: false
+  constructor (props) {
+    super (props);
+    this.state = {
+      logout: true,
+    }
   }
+
+  async componentWillMount () {
+    const flag = (localStorage.session === 'true') ? true : false;
+    this.setState({
+      logout: flag,
+    }, () => {
+      this.props.setSession(this.state.logout)
+    })
+  }
+
   render () {
     return (
       <MDBNavbar className='nav-style' color='stylish-color' light>
@@ -18,7 +31,7 @@ export default class Navbar extends Component {
         <Logo />
         </MDBNavbarBrand>
         <MDBNavbarNav right>
-          {this.state.logout === false ? '' : <LogoutOutlined className='logout' /> }
+          {(JSON.parse(localStorage.getItem('user_data'))) ? <div></div> : <LogoutOutlined className='logout' /> }
         </MDBNavbarNav>
       </MDBNavbar>
     );

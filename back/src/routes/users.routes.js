@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const {
-  getUsers, registerUser, loginUSer, getUser
+  getUsers, registerUser, loginUSer, getUser, deleteUser
 } = require('../controllers/users.controllers.js');
 
 router.route('/')
@@ -13,5 +13,6 @@ router.route('/auth')
 
 router.route('/:id')
   .get(getUser)
+  .delete(deleteUser)
 
 module.exports = router;

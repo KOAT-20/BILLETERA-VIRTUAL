@@ -3,11 +3,12 @@ const userModel = require('../models/users.models.js');
 const passport = require('passport');
 
 userControl.registerUser = async (req, res) => {
-  const { name, lastname, email, password } = req.body;
+  const { documents, name, phone, email, password } = req.body;
   const newUser = new userModel({
-    name, lastname, email, password
+    documents, name, phone, email, password
   })
   try {
+    const newUser = new userModel(req.body);
     let message = 'Usuario creado!';
     newUser.password = await newUser.passEncrypt(password);
     await newUser.save();
@@ -30,6 +31,14 @@ userControl.getUsers = async (req, res) => {
 userControl.getUser = async (req, res) => {
   const user =  await userModel.findById(req.params.id);
     res.json(user);
+}
+
+userControl.deleteUser = async (req, res) => {
+  const { _id } = req.body;
+  await userModel.findOneAndDelete({_id: req.params.id}, {
+    _id,
+  });
+  res.json({message: 'Usuario eliminado!'})
 }
 
 module.exports = userControl;
