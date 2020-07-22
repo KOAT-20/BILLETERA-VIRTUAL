@@ -12,8 +12,8 @@ export default class Login extends Component {
           <div className='text-center'><LoginOutlined className='icon-login' /></div>
           <form>
             <div className='grey-text mt-3'>
-              <label htmlFor='user' className='black-text'>User</label>
-              <input type='text' id='user' className='form-control' />
+              <label htmlFor='email' className='black-text'>Email</label>
+              <input type='email' id='email' className='form-control' />
               <br />
               <label htmlFor='password' className='black-text'>Password</label>
               <input type='text' id='password' className='form-control' />
