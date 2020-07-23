@@ -27,12 +27,19 @@ userControl.registerUser = async (req, res) => {
   }
 }
 
-userControl.getUser = async (req, res, verifyToken) => {
-  const user =  await userModel.findById(req.params.id, { password: 0 });
-  if (!user) {
-    return res.status(404).send('Usuario no encontrdo');
+userControl.getUser = async (req, res, next) => {
+  const token = req.headers['x-access-token'];
+  if (!token) {
+      return res.status(401).send({ auth: false, message: 'No token provided' });
   }
-  res.status(200).json(user);
+  // Decode the Tokenreq.userId = decoded.id;
+  const decoded = await jwt.verify(token, config.secret);
+  const user = await userModel.findById(decoded.id);
+  if (!user) {
+    return res.status(404).send({message: 'Usuario no encontrado!'})
+  }
+  next();
+  res.status(200).json({user, token});
 }
 
 userControl.loginUser = async (req, res) => {
@@ -47,7 +54,7 @@ userControl.loginUser = async (req, res) => {
     const token = jwt.sign({id: user._id}, config.secret, {
         expiresIn: 60 * 60 * 24
     });
-    res.status(200).json({auth: true, token});
+    res.status(200).json({auth: true, token, id: user._id});
 }
 
 userControl.logOut = async (req, res) => {

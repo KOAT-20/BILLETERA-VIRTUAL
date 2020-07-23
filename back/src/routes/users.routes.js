@@ -15,7 +15,7 @@ router.route('/logout')
   .get(logOut)
 
 router.route('/:id')
-  .get(getUser)
+.get(getUser)
   .delete(deleteUser)
 
 
