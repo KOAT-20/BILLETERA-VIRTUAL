@@ -40,9 +40,7 @@ export default class Profile extends Component {
   reloadWallet = async (e) => {
     try {
       e.preventDefault();
-      if (this.state.documents.length === '' ||
-          this.state.phone.length === '' ||
-          this.state.amount.length === '') {
+      if (this.state.amount.length === 0) {
         this.setState({
           btn: true,
           flagMsg: !this.state.flagMsg,
@@ -52,8 +50,6 @@ export default class Profile extends Component {
         console.log('error');
       } else {
         await axios.post('http://localhost:4000/api/wallet', {
-          documents: this.state.documents,
-          phone: this.state.phone,
           amount: this.state.amount,
         })
         this.setState({

@@ -16,6 +16,6 @@ app.use(passport.session());
 // Routes
 app.get('/', (req, res) => res.send('Servidor de Wallet Virtual'));
 app.use('/api/users', require('./routes/users.routes.js'));
-// app.use('/api/auth', require('./routes/users.routes.js'));
+app.use('/api/wallet', require('./routes/wallet.routes.js'));
 
 module.exports = app;
