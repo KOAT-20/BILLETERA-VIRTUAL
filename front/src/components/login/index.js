@@ -23,7 +23,7 @@ export default class Login extends Component {
     const regexPassword = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[_$.!])[0-9a-zA-Z_$.!-]{8,16}$/;
     if (regexEmail.test(this.state.email) && regexPassword.test(this.state.password)) {
       try {
-        const res = await axios.post('http://localhost:4000/api/auth', {
+        const res = await axios.post('http://localhost:4000/api/users/auth', {
           email: this.state.email,
           password: this.state.password,
         });

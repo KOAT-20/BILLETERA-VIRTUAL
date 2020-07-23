@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
 
-require('./config/auth.js');
+// require('./config/auth.js');
 // Settings
 app.set('port', process.env.PORT || 5000);
 // Middlewares
@@ -16,6 +16,6 @@ app.use(passport.session());
 // Routes
 app.get('/', (req, res) => res.send('Servidor de Wallet Virtual'));
 app.use('/api/users', require('./routes/users.routes.js'));
-app.use('/api/auth', require('./routes/users.routes.js'));
+// app.use('/api/auth', require('./routes/users.routes.js'));
 
 module.exports = app;
