@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {
-  MDBCard, MDBCardBody, MDBRow, MDBCol, MDBCardHeader, MDBBtn, MDBCardTitle
+  MDBCard, MDBCardBody, MDBRow, MDBCol, MDBCardHeader, MDBBtn, MDBCardTitle,
+  MDBCardFooter
 }from 'mdbreact';
 /* Components */
 import Alert from '../../components/alerts';
@@ -109,6 +110,10 @@ export default class Profile extends Component {
               <div className="form-group">
                 {this.state.email === '' ? <div>Email: Cargando...</div> : this.state.email }
               </div>
+              <MDBCardFooter>
+                <MDBCardTitle className='h1'>Your balance</MDBCardTitle>
+                <h1>0.0 USD $</h1>
+              </MDBCardFooter>
             </MDBCol>
             <MDBCol>
               <MDBCardHeader>
