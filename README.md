@@ -6,8 +6,8 @@ git clone https://github.com/KOAT-20/BILLETERA-VIRTUAL
 
 **Back**
 
-install MongoDb -> https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
-install Node -> https://nodejs.org/es/download/
+*install MongoDb -> https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/*
+*install Node -> https://nodejs.org/es/download/*
 
 cd BILLETERA-VIRTUAL
 cd back
