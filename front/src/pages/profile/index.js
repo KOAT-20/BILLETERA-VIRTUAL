@@ -3,13 +3,16 @@ import axios from 'axios'
 import {
   MDBCard, MDBCardBody, MDBRow, MDBCol, MDBCardHeader, MDBBtn, MDBCardTitle
 }from 'mdbreact';
+/* Components */
+import Alert from '../../components/alerts';
 
 export default class Profile extends Component {
   state = {
     documents: '',
     name: '',
     phone: '',
-    email: ''
+    email: '',
+    amount: ''
   }
 
   async componentDidMount (id) {
@@ -31,6 +34,58 @@ export default class Profile extends Component {
     } catch (e) {
 
     }
+  }
+
+  reloadWallet = async (e) => {
+    try {
+      e.preventDefault();
+      if (this.state.documents.length === '' ||
+          this.state.phone.length === '' ||
+          this.state.amount.length === '') {
+        this.setState({
+          btn: true,
+          flagMsg: !this.state.flagMsg,
+          case: 'warning',
+          msg: 'Por favor, complete todos los campos',
+        })
+        console.log('error');
+      } else {
+        await axios.post('http://localhost:4000/api/wallet', {
+          documents: this.state.documents,
+          phone: this.state.phone,
+          amount: this.state.amount,
+        })
+        this.setState({
+          documents: '',
+          phone: '',
+          amount: '',
+          btn: true,
+          flagMsg: !this.state.flagMsg,
+          case: 'success',
+          msg: 'Billetera Recargada!',
+        });
+      }
+    } catch (error) {
+      this.setState({
+        btn: true,
+        flagMsg: !this.state.flagMsg,
+        case: 'warning',
+        msg: 'Por Favor ingrese el monto a recargar!',
+      });
+    }
+  }
+
+  setFlagMsg = () => {
+    this.setState({
+      flagMsg: false,
+      btn: false,
+    });
+  };
+
+  changeInput = (e) => {
+    this.setState ({
+      [e.target.id]: e.target.value
+    })
   }
 
   render () {
@@ -59,26 +114,27 @@ export default class Profile extends Component {
               <MDBCardHeader>
                 <MDBCardTitle>Reload Wallet</MDBCardTitle>
               </MDBCardHeader>
-              <form className='mt-2'>
+              <form onSubmit={this.reloadWallet} className='mt-2'>
                 <div className="form-group">
                   <label htmlFor="documents" className="disabled">Document:</label>
-                  <input type="number" id="documents" className="form-control" placeholder="Your document" disabled />
+                  <input type="number" id="documents" className="form-control" placeholder="Your document" disabled onChange={this.changeInput} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="numbre" className="disabled">Phone:</label>
-                  <input type="number" id="numbre" className="form-control" placeholder="Your phone" disabled />
+                  <input type="number" id="numbre" className="form-control" placeholder="Your phone" disabled onChange={this.changeInput} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="amount">Amount:</label>
-                  <input type="number" id="amount" className="form-control" placeholder="USD $" />
+                  <input type="number" id="amount" className="form-control" placeholder="USD $" onChange={this.changeInput} />
                 </div>
                 <div className='text-center mt-3'>
-                  <MDBBtn color='orange w-75'>Send</MDBBtn>
+                  <MDBBtn type='submit'color='orange w-75'>Send</MDBBtn>
                 </div>
               </form>
             </MDBCol>
           </MDBRow>
         </MDBCardBody>
+        <Alert btn={this.state.btn} setFlagMsg={this.setFlagMsg} case={this.state.case} msg={this.state.msg} flagMsg={this.state.flagMsg} />
       </MDBCard>
     );
   }
