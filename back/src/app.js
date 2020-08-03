@@ -4,8 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
 
-// require('./config/auth.js');
-// Settings
 app.set('port', process.env.PORT || 5000);
 // Middlewares
 app.use(cors());
